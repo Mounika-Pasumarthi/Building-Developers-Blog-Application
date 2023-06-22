@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--<link rel="stylesheet" type="text/css" href="C:\Users\P.Mounika\Desktop\pfs\blog\static\login.css">-->
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='login.css')}}">
+  <link href="{{url_for('static',filename='ic2.ico')}}" rel="icon">
+</head>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <center style="color:red"><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <form method="post">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" placeholder="Enter your username">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password">
+      <a href="{{url_for('forgotpassword')}}">Forget password?</a><p class="no-account">No account? 
+      <a href="{{url_for('registration')}}">Sign up</a></p><br/>
+      <input type="submit">
+    </form>
+  </div>
+</body>
+</html>

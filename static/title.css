@@ -1,0 +1,25 @@
+* {
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+body {
+  
+    background-size: cover;
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/008/167/404/small/simply-soft-gradation-technology-background-free-vector.jpg');
+    
+
+}
+.btnstyle {
+    background-color:chartreuse;
+    color:black;
+    padding:20px;
+    border-radius: 8px;
+    border:none;
+    font-size: 25px;
+    margin: 10px;
+    cursor: pointer;
+}
+.blog {
+    margin-top:23%; 
+}
+

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Section</title>
+  
+  <link href="{{url_for('static',filename='ic2.ico')}}" rel="icon">
+  <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}"> 
+   
+    </style>    
+
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+        .navbar .form-inline {
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+     <!--Stylesheet----------------------------------->
+   
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}"/>
+
+
+
+<!--poppins-font-family-------------------------->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head> 
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="notesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       Posts
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="notesDropdown">
+                      
+                      
+                      
+                        <a class="dropdown-item" href="{{url_for('allpost')}}">View Posts</a>
+                        <a class="dropdown-item" href="{{url_for('addpost')}}">Add Posts</a>
+                        <a href="#about">About Us</a>
+                       
+                        
+                    
+
+                    </div>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="font-weight: bold;">Hello,{{session.get('user')}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('logout')}}">logout</a>
+                </li>
+            </ul>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>&nbsp;
+                
+            </form>
+        </div>
+    </nav>
+    
+    <!-- Add Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <section id="blog">
+
+        <!--blog-heading--------------->
+        <div class="blog-heading">
+          
+          <h1 style="text-align: center;">My Blog</h1>
+          <img src="https://www.epimorphics.com/wp-content/uploads/2022/12/TechTalk-coral.jpg"  width="150%" height="450px" >
+          </div>
+
+<br>
+<br>
+<br>
+          
+
+     <section>
+    
+          <!--container---------------->
+          <div class="blog-container">
+    
+            <!--box-1------------->
+            <div class="blog-box">
+    
+              <!--img---->
+              <div class="blog-img">
+                <img src="https://images.ctfassets.net/lzny33ho1g45/O97hZQ1aOEmlyKFuO2IuD/55f05f194e124c28674e713730124e7b/Python.jpg?w=1520&fm=jpg&q=30&fit=thumb&h=760"class="card-img-top" alt="blog" >
+              </div>
+              <!--text--->
+              <div class="blog-text">
+                <a href="#" class="blog-title">What can you  do with Python ?</a>
+                <p>Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation via the off-side rule. Python is dynamically typed and garbage-collected.</p>
+                <a href="https://www.python.org/">Read More</a>
+              </div>
+    
+            </div>
+    
+            
+    
+    
+            <!--box-2------------->
+            <div class="blog-box">
+    
+              <!--img---->
+              <div class="blog-img">
+                <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210203170945/HTML-Tutorials.png" class="card-img-bottom" alt="blog" width="740px" height="200px" >
+              </div>
+              <!--text--->
+              <div class="blog-text">
+                
+                <a href="#" class="blog-title">What Has Happened with HTML ?</a>
+                <p>The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser.Web browsers receive HTML documents from a web server or from local storage and render the documents into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for its appearance. </p>
+                <a href="https://html.com/">Read More</a>
+              </div>
+    
+            </div>
+    
+    
+    
+    
+            <!--box-3------------->
+            <div class="blog-box">
+    
+              <!--img---->
+              <div class="blog-img">
+                <img src="https://1000logos.net/wp-content/uploads/2020/08/MySQL-Logo.png" alt="blog" width="">
+              </div>
+              <!--text--->
+              <div class="blog-text">
+               
+                <a href="#" class="blog-title">Why should we learn MYSQL ?</a>
+                <p>MySQL is an open-source relational database management system. Its name is a combination of "My", the name of co-founder Michael Widenius's daughter My, and "SQL", the acronym for Structured Query Language.</p>
+                <a href="https://www.mysql.com/">Read More</a>
+              </div>
+    
+            </div>
+    
+         
+
+
+            <!--box4-->
+          <div class="blog-box">
+    
+            <!--img---->
+            <div class="blog-img">
+              <img src="https://colorlib.com/wp/wp-content/uploads/sites/2/creative-css3-tutorials.jpg" alt="blog" width="">
+            </div>
+            <!--text--->
+            <div class="blog-text">
+             
+              <a href="#" class="blog-title">How to apply CSS styles to HTML ?</a>
+              <p>Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.</p>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">Read More</a>
+            </div>
+  
+          </div>
+  
+       
+         <!--box-5------------->
+         <div class="blog-box">
+    
+          <!--img---->
+          <div class="blog-img">
+            <img src="https://miro.medium.com/v2/resize:fit:438/1*0G5zu7CnXdMT9pGbYUTQLQ.png" alt="blog" width="">
+          </div>
+          <!--text--->
+          <div class="blog-text">
+           
+            <a href="#" class="blog-title">Why should we learn Flask Framework?</a>
+            <p>Flask is a micro web framework written in Python. It is classified as a microframework because it does not require particular tools or libraries. It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions.</p>
+            <a href="https://flask.palletsprojects.com/">Read More</a>
+          </div>
+
+        </div>
+
+   
+
+       <!--box-6------------->
+       <div class="blog-box">
+    
+        <!--img---->
+        <div class="blog-img">
+          <img src="https://cdn-cjido.nitrocdn.com/OWBpPGhVFQSOSTFJpSSOzqWMqrFnKYbA/assets/images/optimized/rev-f73d577/wp-content/uploads/2020/02/javascript-logo.jpg" alt="blog" width="">
+        </div>
+        <!--text--->
+        <div class="blog-text">
+         
+          <a href="#" class="blog-title">How to use JavaScript ?</a>
+          <p>JavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. As of 2022, 98% of websites use JavaScript on the client side for webpage behavior, often incorporating third-party libraries.</p>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">Read More</a>
+        </div>
+
+      </div>
+
+    </div>
+     </section>
+
+  </section>
+
+  
+
+     <section><footer style="text-align: center; background-color: aqua;">Copyright &copy;2025</footer>
+    </section>
+    <div class="about-section" id="about">
+
+        
+      <h2>About Us</h2>
+      <p>A blog is an informational website published on the World Wide Web consisting of discrete, often informal diary-style text entries.</p>
+      <p>Posts are typically displayed in reverse chronological order so that the most recent post appears first, at the top of the web page.</p>
+</body>
+</html>
+     

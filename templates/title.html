@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Blog</title>
+    <link href="{{url_for('static',filename='ic2.ico')}}" rel="icon">
+     <!--<link rel="stylesheet" type="text/css" href="C:\Users\P.Mounika\Desktop\pfs\blog\static\title.css">-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='title.css')}}">
+ 
+ </head>
+ <body>
+     <div class="blog">
+     <center><h1 style=font-size:90px;>TECHNICAL BLOG</h1></center>
+     </div>
+     <div style="text-align:center;">
+     <a href="{{url_for('registration')}}"><button class="btnstyle">Register</button></a>
+     <a href="{{url_for('login')}}"><button class="btnstyle">Login</button></a>
+     </div>
+
+    
+</body>
+</html>

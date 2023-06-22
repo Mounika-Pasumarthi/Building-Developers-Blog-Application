@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='table.css')}}">
+    <link href="{{url_for('static',filename='ic2.ico')}}" rel="icon">
+
+        <style>
+        .navbar .form-inline {
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <center style="color:red"><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="notesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Posts
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="notesDropdown">
+                        <a class="dropdown-item" href="#">View Posts</a>
+                        <a class="dropdown-item" href="{{url_for('addpost')}}">Add Posts</a>
+                        
+
+                    </div>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Hello,{{session.get('user')}}</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('logout')}}">logout</a>
+                </li>
+            </ul>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>link</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr> 
+                <td>{{i[1]}}</td>
+                <td><a href="{{url_for('viewpost',postid=i[0])}}">view</a></td>
+                <td>{{i[2]}}</td>
+                <td><a href="{{url_for('updatepost',postid=i[0])}}">update</a></td>
+                <td><a href="{{url_for('delete',postid=i[0])}}">delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+     <br>
+     <br>
+    <a href="{{url_for('home')}}"><button>Back</button></a>
+
+    <!-- Add Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+    

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forgot Password</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='forgot.css')}}">
+    <link href="{{url_for('static',filename='ic2.ico')}}" rel="icon">
+    <style>
+       
+    .container {
+      width: 300px;
+      margin: 0 auto;
+      padding-top: 100px;
+     
+    }
+  </style>
+   
+</head>
+<body>
+    <div class="container">
+        <h2>Forgot Password</h2>
+        <!--
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert">{{ messages[0] }}</div>
+            {% endif %}
+        {% endwith %}-->
+        <form action="{{ url_for('forgotpassword') }}" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br><br>
+            <button type="submit">Reset Password</button>
+
+
+
+           
+
+        </form>
+    </div>
+
+
+
+    
+  
+
+
+</body>
+</html>

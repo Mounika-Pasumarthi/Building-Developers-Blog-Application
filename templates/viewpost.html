@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='add.css')}}">
+    <link href="{{url_for('static',filename='ic2.ico')}}">
+    <title>View Post</title>
+    <style>
+        .navbar .form-inline {
+            display: flex;
+            justify-content: flex-end;
+        }
+        </style>
+</head>
+<body>
+   
+
+
+        <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="notesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Posts
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="notesDropdown">
+                        <a class="dropdown-item" href="{{url_for('allpost')}}">View posts</a>
+                        <a class="dropdown-item" href="{{url_for('addpost')}}">Add Posts</a>
+                        
+
+                    </div>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Hello,{{session.get('user')}}</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('logout')}}">logout</a>
+                </li>
+            </ul>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <br>
+    <div class="container">
+        <h1>View posts</h1>
+        <label for="titleField">Title:</label>
+            <input type="text" id="titleField" value="{{title}}" name="title" readonly/>
+
+            <label for="contentField">Content:</label>
+            <textarea id="contentField" class="content-field"  name="content" readonly>{{content}}</textarea>
+
+            <a href="{{url_for('allpost')}}"><button>Back</button></a>
+
+    </div>
+
+
+    <!-- Add Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

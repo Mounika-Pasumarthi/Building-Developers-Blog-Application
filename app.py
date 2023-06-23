@@ -1,3 +1,4 @@
+#importing packages
 from flask import Flask,redirect,render_template,url_for,request,flash,session
 import mysql.connector
 import smtplib
@@ -11,10 +12,22 @@ from key import secret_key,salt
 from itsdangerous import URLSafeTimedSerializer
 from stoken import token
 from mailc import sendmail
+import os
 app=Flask(__name__)
 app.secret_key=secret_key
 app.config['SESSION_TYPE']='filesystem'
-mydb=mysql.connector.connect(host="localhost",user="root",password="admin",db="blog")
+user=os.environ.get('RDS_USERNAME')
+db=os.environ.get('RDS_DB_NAME')
+password=os.environ.get('RDS_PASSWORD')
+host=os.environ.get('RDS_HOSTNAME')
+port=os.environ.get('RDS_PORT')
+with mysql.connector.connect(host=host,user=user,password=password,port=port,db=db) as conn:
+    cursor=conn.cursor(buffered=True)
+    cursor.execute("create table if not exists users(username varchar(50) primary key,password varchar(15),email varchar(60) unique)")
+    cursor.execute("create table if not exists posts(postid int not null auto_increment primary key,title tinytext,content text,date timestamp default now() on update now(),added_by varchar(50),foreign key(added_by) references users(username))")
+    cursor.close()
+    mydb=mysql.connector.connect(host=host,user=user,password=password,db=db)
+#mydb=mysql.connector.connect(host="localhost",user="root",password="admin",db="blog")
 @app.route('/')
 def index():
     return render_template('title.html')
@@ -32,14 +45,14 @@ def registration():
         count1=cursor.fetchone()[0]
         cursor.close()
         if count==1:
-            flash('username is already in use')
+            flash('Username is already  used!')
             return render_template('registration.html')
         elif count1==1:
-            flash('Email already in use')
+            flash('Email already used!')
             return render_template('registration.html')
         data={'username':username,'password':password,'email':email}
         subject='Email Confirmation'
-        body=f"Thanks for signing up\n\n follow this link  further steps-{url_for('confirm',token=token(data),_external=True)}"
+        body=f"Thanks for signing up\n\n follow this link for further steps-{url_for('confirm',token=token(data),_external=True)}"
         sendmail(to=email,subject=subject,body=body)
         flash('Confirmation link sent to mail')
         return redirect(url_for('login'))
@@ -195,4 +208,5 @@ def updatepost(postid):
     else:
         return redirect(url_for('login'))
 
-app.run(debug=True,use_reloader=True)
+if __name__=='__main__':
+    app.run()

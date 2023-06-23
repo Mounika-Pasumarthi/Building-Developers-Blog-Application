@@ -1,4 +1,3 @@
-#importing packages
 from flask import Flask,redirect,render_template,url_for,request,flash,session
 import mysql.connector
 import smtplib
